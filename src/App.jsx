@@ -7,6 +7,9 @@ import InterfaceStatus from './components/InterfaceStatus';
 import DeviceTemperatures from './components/DeviceTemperatures';
 import CpuUtilization from './components/CpuUtilization';
 import DeviceUptime from './components/DeviceUptime';
+import DeviceTimeline from './components/DeviceTimeline';
+import DeviceSearch from './components/DeviceSearch';
+
 
 const App = () => {
   const [networkData, setNetworkData] = useState({});
@@ -166,6 +169,8 @@ const App = () => {
       {loading && <div className="text-center">Загрузка данных...</div>}
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
         <NetworkPerformance />
+        <DeviceSearch />
+        <DeviceTimeline />
         <ErrorsTable errors={errors} getActionColor={getActionColor} />
         <RecentAlarms alarmCount={alarmCount} errors={errors} />
         <MemoryUtilization networkData={networkData} getMemoryGB={getMemoryGB} />
@@ -173,6 +178,7 @@ const App = () => {
         <DeviceTemperatures networkData={networkData} getTemperatureC={getTemperatureC} getTemperatureColor={getTemperatureColor} />
         <CpuUtilization networkData={networkData} getCpuPercentage={getCpuPercentage} />
         <DeviceUptime networkData={networkData} />
+
       </div>
     </div>
   );
